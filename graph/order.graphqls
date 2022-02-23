@@ -1,0 +1,28 @@
+type Order {
+  id: ID
+  customerID: String
+  orderDetails: [OrderDetail!]
+}
+
+type OrderDetail {
+  id: ID
+  orderID: String
+  menuName: String
+  menuPrice: Int
+}
+
+extend type Query {
+  order: Order
+  orders: [Order!]
+}
+
+extend type Mutation {
+  createOrder(
+    dryRun: Boolean! = false,
+  ): Order!
+  deleteOrder(
+    dryRun: Boolean! = false,
+  ): ID
+  !
+}
+

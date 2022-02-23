@@ -7,6 +7,19 @@ type NewTodo struct {
 	UserID string `json:"userId"`
 }
 
+type Order struct {
+	ID           *string        `json:"id"`
+	CustomerID   *string        `json:"customerID"`
+	OrderDetails []*OrderDetail `json:"orderDetails"`
+}
+
+type OrderDetail struct {
+	ID        *string `json:"id"`
+	OrderID   *string `json:"orderID"`
+	MenuName  *string `json:"menuName"`
+	MenuPrice *int    `json:"menuPrice"`
+}
+
 type Todo struct {
 	ID   string `json:"id"`
 	Text string `json:"text"`
