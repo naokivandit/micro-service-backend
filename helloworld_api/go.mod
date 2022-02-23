@@ -1,4 +1,4 @@
-module github.com/naokivandit/gqlgen-todos
+module github.com/naokivandit/micro-service-backend/helloworld_api
 
 go 1.14
 
@@ -12,6 +12,4 @@ require (
 	github.com/urfave/cli/v2 v2.3.0 // indirect
 	github.com/vektah/gqlparser/v2 v2.2.0
 	golang.org/x/tools v0.1.5 // indirect
-	google.golang.org/grpc v1.44.0
-	google.golang.org/grpc/examples v0.0.0-20220223011601-02f384d41a10
 )

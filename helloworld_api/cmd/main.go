@@ -5,10 +5,10 @@ import (
 	"net/http"
 	"os"
 
+	"github.com/99designs/gqlgen/example/federation/reviews/graph"
 	"github.com/99designs/gqlgen/graphql/handler"
 	"github.com/99designs/gqlgen/graphql/playground"
-	"github.com/naokivandit/gqlgen-todos/graph"
-	"github.com/naokivandit/gqlgen-todos/graph/generated"
+	"github.com/naokivandit/micro-service-backend/helloworld_api/api/graphql/generated"
 	"github.com/rs/cors"
 )
 
