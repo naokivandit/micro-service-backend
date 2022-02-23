@@ -2,6 +2,10 @@
 
 package model
 
+type HelloReply struct {
+	Message string `json:"message"`
+}
+
 type NewTodo struct {
 	Text   string `json:"text"`
 	UserID string `json:"userId"`
