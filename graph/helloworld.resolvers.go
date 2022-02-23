@@ -9,18 +9,10 @@ import (
 	"log"
 	"time"
 
+	"github.com/naokivandit/gqlgen-todos/graph/generated"
 	"github.com/naokivandit/gqlgen-todos/graph/model"
 	"google.golang.org/grpc"
 	pb "google.golang.org/grpc/examples/helloworld/helloworld"
-)
-
-const (
-	defaultName = "world"
-)
-
-var (
-	addr = flag.String("addr", "localhost:50051", "the address to connect to")
-	name = flag.String("name", defaultName, "Name to greet")
 )
 
 func (r *queryResolver) SayHello(ctx context.Context, name *string) (*model.HelloReply, error) {
@@ -47,3 +39,23 @@ func (r *queryResolver) SayHello(ctx context.Context, name *string) (*model.Hell
 		Message: res.Message,
 	}, nil
 }
+
+// Query returns generated.QueryResolver implementation.
+func (r *Resolver) Query() generated.QueryResolver { return &queryResolver{r} }
+
+type queryResolver struct{ *Resolver }
+
+// !!! WARNING !!!
+// The code below was going to be deleted when updating resolvers. It has been copied here so you have
+// one last chance to move it out of harms way if you want. There are two reasons this happens:
+//  - When renaming or deleting a resolver the old code will be put in here. You can safely delete
+//    it when you're done.
+//  - You have helper methods in this file. Move them out to keep these resolver files clean.
+const (
+	defaultName = "world"
+)
+
+var (
+	addr = flag.String("addr", "localhost:50051", "the address to connect to")
+	name = flag.String("name", defaultName, "Name to greet")
+)
