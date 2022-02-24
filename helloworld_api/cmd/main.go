@@ -7,8 +7,8 @@ import (
 
 	"github.com/99designs/gqlgen/graphql/handler"
 	"github.com/99designs/gqlgen/graphql/playground"
-	"github.com/naokivandit/micro-service-backend/helloworld_api/graph"
-	"github.com/naokivandit/micro-service-backend/helloworld_api/graph/generated"
+	"github.com/naokivandit/micro-service-backend/helloworld_api/api/graphql/generated"
+	"github.com/naokivandit/micro-service-backend/helloworld_api/internal/presentaion"
 	"github.com/rs/cors"
 )
 
@@ -20,7 +20,7 @@ func main() {
 		port = defaultPort
 	}
 
-	srv := handler.NewDefaultServer(generated.NewExecutableSchema(generated.Config{Resolvers: &graph.Resolver{}}))
+	srv := handler.NewDefaultServer(generated.NewExecutableSchema(generated.Config{Resolvers: &presentaion.Resolver{}}))
 	c := cors.New(cors.Options{
 		AllowedOrigins:   []string{"http://localhost:3000"},
 		AllowCredentials: true,

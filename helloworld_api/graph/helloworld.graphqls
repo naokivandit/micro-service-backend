@@ -1,7 +1,0 @@
-type HelloReply {
-  message: String!
-}
-
-extend type Query {
-  sayHello(name: String): HelloReply
-}

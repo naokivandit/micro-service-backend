@@ -11,7 +11,7 @@ import (
 
 	"github.com/99designs/gqlgen/graphql"
 	"github.com/99designs/gqlgen/graphql/introspection"
-	"github.com/naokivandit/micro-service-backend/helloworld_api/graph/model"
+	"github.com/naokivandit/micro-service-backend/helloworld_api/internal/domain/model"
 	gqlparser "github.com/vektah/gqlparser/v2"
 	"github.com/vektah/gqlparser/v2/ast"
 )
@@ -138,7 +138,7 @@ func (ec *executionContext) introspectType(name string) (*introspection.Type, er
 }
 
 var sources = []*ast.Source{
-	{Name: "graph/helloworld.graphqls", Input: `type HelloReply {
+	{Name: "api/graphql/helloworld.graphqls", Input: `type HelloReply {
   message: String!
 }
 
@@ -292,7 +292,7 @@ func (ec *executionContext) _Query_sayHello(ctx context.Context, field graphql.C
 	}
 	res := resTmp.(*model.HelloReply)
 	fc.Result = res
-	return ec.marshalOHelloReply2ᚖgithubᚗcomᚋnaokivanditᚋmicroᚑserviceᚑbackendᚋhelloworld_apiᚋgraphᚋmodelᚐHelloReply(ctx, field.Selections, res)
+	return ec.marshalOHelloReply2ᚖgithubᚗcomᚋnaokivanditᚋmicroᚑserviceᚑbackendᚋhelloworld_apiᚋinternalᚋdomainᚋmodelᚐHelloReply(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) _Query___type(ctx context.Context, field graphql.CollectedField) (ret graphql.Marshaler) {
@@ -2125,7 +2125,7 @@ func (ec *executionContext) marshalOBoolean2ᚖbool(ctx context.Context, sel ast
 	return graphql.MarshalBoolean(*v)
 }
 
-func (ec *executionContext) marshalOHelloReply2ᚖgithubᚗcomᚋnaokivanditᚋmicroᚑserviceᚑbackendᚋhelloworld_apiᚋgraphᚋmodelᚐHelloReply(ctx context.Context, sel ast.SelectionSet, v *model.HelloReply) graphql.Marshaler {
+func (ec *executionContext) marshalOHelloReply2ᚖgithubᚗcomᚋnaokivanditᚋmicroᚑserviceᚑbackendᚋhelloworld_apiᚋinternalᚋdomainᚋmodelᚐHelloReply(ctx context.Context, sel ast.SelectionSet, v *model.HelloReply) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
