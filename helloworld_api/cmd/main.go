@@ -7,8 +7,8 @@ import (
 
 	"github.com/99designs/gqlgen/graphql/handler"
 	"github.com/99designs/gqlgen/graphql/playground"
-	"github.com/naokivandit/gqlgen-todos/graph"
-	"github.com/naokivandit/gqlgen-todos/graph/generated"
+	"github.com/naokivandit/micro-service-backend/helloworld_api/graph"
+	"github.com/naokivandit/micro-service-backend/helloworld_api/graph/generated"
 	"github.com/rs/cors"
 )
 

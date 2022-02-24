@@ -9,8 +9,8 @@ import (
 	"log"
 	"time"
 
-	"github.com/naokivandit/gqlgen-todos/graph/generated"
-	"github.com/naokivandit/gqlgen-todos/graph/model"
+	"github.com/naokivandit/micro-service-backend/helloworld_api/graph/generated"
+	"github.com/naokivandit/micro-service-backend/helloworld_api/graph/model"
 	"google.golang.org/grpc"
 	pb "google.golang.org/grpc/examples/helloworld/helloworld"
 )
