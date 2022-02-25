@@ -18,7 +18,9 @@ import (
 func (r *queryResolver) SayHello(ctx context.Context, name *string) (*model.HelloReply, error) {
 	flag.Parse()
 	// Set up a connection to the server.
-	conn, err := grpc.Dial(*addr, grpc.WithInsecure())
+	// conn, err := grpc.Dial(*addr, grpc.WithInsecure())
+
+	conn, err := grpc.Dial("helloworld:50051", grpc.WithInsecure())
 	if err != nil {
 		log.Fatalf("did not connect: %v", err)
 	}
@@ -31,6 +33,9 @@ func (r *queryResolver) SayHello(ctx context.Context, name *string) (*model.Hell
 	defer cancel()
 	res, err := c.SayHello(ctx, &pb.HelloRequest{Name: "name"})
 	if err != nil {
+		return &model.HelloReply{
+			Message: "error",
+		}, nil
 		log.Fatalf("could not greet: %v", err)
 	}
 	log.Printf("Greeting: %s", res.GetMessage())
@@ -44,18 +49,3 @@ func (r *queryResolver) SayHello(ctx context.Context, name *string) (*model.Hell
 func (r *Resolver) Query() generated.QueryResolver { return &queryResolver{r} }
 
 type queryResolver struct{ *Resolver }
-
-// !!! WARNING !!!
-// The code below was going to be deleted when updating resolvers. It has been copied here so you have
-// one last chance to move it out of harms way if you want. There are two reasons this happens:
-//  - When renaming or deleting a resolver the old code will be put in here. You can safely delete
-//    it when you're done.
-//  - You have helper methods in this file. Move them out to keep these resolver files clean.
-const (
-	defaultName = "world"
-)
-
-var (
-	addr = flag.String("addr", "localhost:50051", "the address to connect to")
-	name = flag.String("name", defaultName, "Name to greet")
-)
